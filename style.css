@@ -1,8 +1,12 @@
 .digital-clock {
-    display: flex;
-  }
+  display: flex;
+}
   
-  .digital-clock > div {
-    display: flex;
-  }
+.digital-clock > div {
+  display: flex;
+}
+
+div {
+  display: flex;
   
+}
