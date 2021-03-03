@@ -14,16 +14,13 @@ document.getElementById("stop").addEventListener("click", stopFunction);
 document.getElementById("reset").addEventListener("click", resetFunction);
 document.getElementById("save").addEventListener("click", saveFunction);
 
-var result;
-var g = "";
+
 function badumts() {
   renderDigits(seconds, secondsParagraphs);
   renderDigits(minutes, minutesParagraphs);
   renderDigits(hours, hoursParagraphs);
- // console.log(hours, ":", minutes, ":", seconds);
-  //console.log(document.getElementsByClassName("digital-clock").innerText);
   seconds++;
- // g = renderDigits(hours, hoursParagraphs) + ":" + renderDigits(minutes, minutesParagraphs) + ":" + renderDigits(seconds, secondsParagraphs);
+ 
   if (seconds === 60) {
     seconds = 0;
     minutes++;
@@ -37,26 +34,18 @@ function badumts() {
   if (hours === 24) {
    hours = 0;
   }
-  
-
-
-  
-  
 };
 
-var result = null;
 
 function startFunction() {
   
-result = setInterval(badumts, 100);
-
-
+ result = setInterval(badumts, 1);
 
 }
 
 function stopFunction() {
   if (result) {
- clearInterval(result);
+   clearInterval(result);
   };
 };
 
@@ -78,13 +67,12 @@ function resetFunction() {
 
 function saveFunction() {
 
-  var para = document.createElement("div");
-  
- // var ata = document.getElementsByClassName("digital-clock");
-  var result = document.getElementsByClassName("digital-clock")[0].innerText;
+  var para = document.createElement('div');
+  var result = document.getElementsByClassName("digital-clock")[0].innerHTML;
   para.innerHTML = result;
-  //ata.appendChild(para);
+  para.className = "digital-clock";
   document.body.appendChild(para);
+
 };
 
 
