@@ -15,7 +15,7 @@ document.getElementById("reset").addEventListener("click", resetFunction);
 document.getElementById("save").addEventListener("click", saveFunction);
 
 
-function badumts() {
+function myFunction() {
   renderDigits(seconds, secondsParagraphs);
   renderDigits(minutes, minutesParagraphs);
   renderDigits(hours, hoursParagraphs);
@@ -39,14 +39,16 @@ function badumts() {
 
 function startFunction() {
   
- result = setInterval(badumts, 1);
+ result = setInterval(myFunction, 1000);
 
 }
 
 function stopFunction() {
+  
   if (result) {
    clearInterval(result);
   };
+
 };
 
 
@@ -63,15 +65,16 @@ function resetFunction() {
   hoursParagraphs[0].innerHTML = 0;
   hoursParagraphs[1].innerHTML = 0;
   clearInterval(result);
-}
+
+};
 
 function saveFunction() {
 
-  var para = document.createElement('div');
+  var newElement = document.createElement('div');
   var result = document.getElementsByClassName("digital-clock")[0].innerHTML;
-  para.innerHTML = result;
-  para.className = "digital-clock";
-  document.body.appendChild(para);
+  newElement.innerHTML = result;
+  newElement.className = "digital-clock";
+  document.body.appendChild(newElement);
 
 };
 
