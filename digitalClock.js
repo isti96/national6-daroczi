@@ -15,7 +15,7 @@ document.getElementById("reset").addEventListener("click", resetFunction);
 document.getElementById("save").addEventListener("click", saveFunction);
 
 
-function myFunction() {
+function firstFunction() {
   renderDigits(seconds, secondsParagraphs);
   renderDigits(minutes, minutesParagraphs);
   renderDigits(hours, hoursParagraphs);
@@ -39,7 +39,7 @@ function myFunction() {
 
 function startFunction() {
   
- result = setInterval(myFunction, 1000);
+ result = setInterval(firstFunction, 1000);
 
 }
 
