@@ -45,6 +45,16 @@ function renderArticle(articleData) {
   const article = document.createElement("div");
   const articleTitle = document.createElement("h3");
   const articleContent = document.createElement("p");
+  
+  const comment = document.createElement("div");
+  const commentUser = document.createElement("h4");
+  const commentContent = document.createElement("p");
+  comment.className = "post-comment";
+
+  comment.appendChild(commentUser);
+  comment.appendChild(commentContent);
+
+  article.appendChild(comment);
 
   article.appendChild(articleTitle);
   article.appendChild(articleContent);
@@ -54,4 +64,12 @@ function renderArticle(articleData) {
  
   articleTitle.innerText = articleData.title;
   articleContent.innerText = articleData.content;
+
+  for (articleData of articleList) {
+  fetch("https://simple-json-server-scit.herokuapp.com/comments?postId=<articleData>")
+   
+    .then(handleFetchResponse)
+    
+    .then(useJSONResponse);
+  }
 }
