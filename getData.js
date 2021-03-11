@@ -3,7 +3,7 @@ console.log("CRUD Operation - Read");
 
 const articleListHtml = document.querySelector(".article-list");
 
-//console.log(articleData);
+
 document.getElementById("get-data").addEventListener("click", getData);
 
 function getData() {
@@ -20,7 +20,7 @@ function handleFetchResponse(response) {
 }
 
 function useJSONResponse(json) {
-  console.log(json);
+ console.log(json);
 
   renderArticles(json);
 }
@@ -29,7 +29,7 @@ function renderArticles(articleList) {
   articleListHtml.innerText = "";
 
   for (const articleData of articleList) {
-    console.log(articleData);
+   console.log(articleData);
     renderArticle(articleData);
   }
 }
