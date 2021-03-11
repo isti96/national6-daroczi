@@ -14,11 +14,12 @@ document
     const articleContent = document.getElementById("article-content").value;
     console.log("articleContent", articleContent);
 
-   
+
     if (articleTitle && articleContent) {
       const payload = {
         title: articleTitle,
         content: articleContent,
+       
       };
 
       console.log("Payload:", payload);
@@ -35,3 +36,7 @@ document
       }).then(getData);
     }
   });
+
+
+
+  
