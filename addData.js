@@ -12,7 +12,7 @@ document
     console.log("articleTitle", articleTitle);
 
     const articleContent = document.getElementById("article-content").value;
-    console.log("articleContent", articleContent);
+    console.log("articleContent", articleContent); 
 
 
     if (articleTitle && articleContent) {
