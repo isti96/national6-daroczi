@@ -41,8 +41,6 @@ function renderArticle(articleData) {
     .then(handleFetchResponse)
 
     .then((comments) => {
-      // renderArticle(articleData, comments);
-
       const article = document.createElement("div");
       const articleTitle = document.createElement("h3");
       const articleContent = document.createElement("p");
