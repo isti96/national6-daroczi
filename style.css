@@ -20,8 +20,24 @@ input {
   margin-left: 10px;
 }
 
-button {
+#addButton {
   background-color: lightblue;
   border-radius: 100%;
 }
 
+.task {
+  display: flex;
+  align-items: center;
+}
+
+.checkBoxClass {
+  padding: 10px;
+}
+
+.taskNameClass {
+  padding: 10px;
+}
+
+#removeButtonTag {
+  padding: 10px;
+}
