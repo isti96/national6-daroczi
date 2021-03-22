@@ -41,3 +41,7 @@ input {
 #removeButtonTag {
   padding: 10px;
 }
+
+.task-item {
+  display: flex;
+}
