@@ -2,7 +2,7 @@ console.log("Homework");
 
 let taskList = [];
 let buttons = [];
-let retek = {};
+let randomList = {};
 let checkBoxes = [];
 const myId = "idaroczi";
 
@@ -20,13 +20,14 @@ fetch(`https://simple-json-server-scit.herokuapp.com/todo/${myId}`)
 function useJSONResponse(json) {
   console.log(json);
 
-  retek = json;
 
-  if (Object.keys(retek).length != 0) {
+  randomList  = json;
+
+  if (Object.keys(randomList).length != 0) {
     taskList = json.todo;
   }
 
-  console.log(retek);
+  
   renderToDoList(json);
 }
 
@@ -47,8 +48,8 @@ function addData() {
   };
   console.log("Payload:", payload);
   console.log("Payload Text:", JSON.stringify(payload));
-  console.log(retek);
-  if (Object.keys(retek).length === 0) {
+  
+  if (Object.keys(randomList).length === 0) {
     
 
     fetch("https://simple-json-server-scit.herokuapp.com/todo/", {
