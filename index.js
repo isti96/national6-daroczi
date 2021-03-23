@@ -1,6 +1,5 @@
 console.log("Homework");
 
-
 let taskList = [];
 let buttons = [];
 let retek = {};
@@ -10,7 +9,6 @@ const myId = "idaroczi";
 const addButton = document
   .getElementById("addButton")
   .addEventListener("click", addData);
-
 
 console.log(taskList);
 
@@ -26,7 +24,6 @@ function useJSONResponse(json) {
 
   if (Object.keys(retek).length != 0) {
     taskList = json.todo;
-    
   }
 
   console.log(retek);
@@ -36,7 +33,8 @@ function useJSONResponse(json) {
 const taskListHtml = document.getElementById("task-list");
 
 function addData() {
-  const taskName = document.getElementById("inputbox").value;
+  const inputBoxValue = document.getElementById("inputbox");
+  const taskName = inputBoxValue.value;
   console.log(taskName);
   let obj = {
     checked: false,
@@ -51,7 +49,7 @@ function addData() {
   console.log("Payload Text:", JSON.stringify(payload));
   console.log(retek);
   if (Object.keys(retek).length === 0) {
-    //(retek === undefined || retek.length == 0) {
+    
 
     fetch("https://simple-json-server-scit.herokuapp.com/todo/", {
       method: "POST",
@@ -69,20 +67,20 @@ function addData() {
       body: JSON.stringify(payload),
     });
   }
-  addNewTask(obj, taskList.length-1);
+  addNewTask(obj, taskList.length - 1);
+  inputBoxValue.value = "";
 }
 
 function addNewTask(taskObj, i) {
-  console.log(taskObj)
+  console.log(taskObj);
   const task = document.createElement("div");
   const checkedBox = document.createElement("input");
   const taskNameTag = document.createElement("p");
-  const removeButton = document.createElement("button");
+  const removeButton = document.createElement("img");
 
-
-  checkedBox.addEventListener('change', function() {
-    taskList[i].checked = this.checked; 
-
+  checkedBox.addEventListener("change", function () {
+    taskList[i].checked = this.checked;
+    checkBoxes.splice(i, 1);
     const payload = {
       id: myId,
       todo: taskList,
@@ -94,21 +92,24 @@ function addNewTask(taskObj, i) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-    }) 
-  })
-  
+    });
+  });
+
   console.log("Payload:", taskObj);
   removeButton.addEventListener("click", function () {
     // console.log(taskList[i]);
     taskList.splice(i, 1);
-
+    buttons.splice(i, 1);
+    for (let i = 0; i < buttons.length; i++) {
+      console.log(buttons[i], i);
+    }
     const payload = {
       id: myId,
       todo: taskList,
     };
     const currentTask = taskListHtml.childNodes[i];
     currentTask.parentNode.removeChild(currentTask);
-    
+
     console.log("Payload:", payload);
     console.log("Payload Text:", JSON.stringify(payload));
 
@@ -118,9 +119,7 @@ function addNewTask(taskObj, i) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-    }) 
-    
-    
+    });
   });
   buttons.push(removeButton);
   checkBoxes.push(checkedBox);
@@ -128,14 +127,17 @@ function addNewTask(taskObj, i) {
   checkedBox.type = "checkbox";
   checkedBox.className = "checkBoxClass";
 
-  
-  
+  removeButton.type = "img";
   task.className = "task-item";
   taskNameTag.className = "taskNameTagClass";
-  //removeButton.className = "removeButtonClass";
-  removeButton.setAttribute("id", "removeButtonClass");
-  //removeButton.setAttribute("href", "index.html");
-  removeButton.innerText = "delete";
+  
+  removeButton.className = "removeButtonClass";
+  
+  removeButton.setAttribute(
+    "src",
+    "https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg"
+  );
+
   taskNameTag.innerText = taskObj.item;
   checkedBox.checked = taskObj.checked;
   console.log("Payload:", taskObj);
@@ -146,10 +148,6 @@ function addNewTask(taskObj, i) {
 }
 
 function getData() {
-  let checkBox = document.getElementById("checkBoxClass");
-
-  const taskName = document.getElementById("inputbox").value;
-
   fetch(`https://simple-json-server-scit.herokuapp.com/todo/${myId}`)
     .then((r) => r.json())
     .then(renderToDoList)
@@ -157,29 +155,29 @@ function getData() {
 }
 
 function renderToDoList(response) {
-  console.log("ITEM:", response, "  ",response.todo.length);
+  console.log("ITEM:", response, "  ", response.todo.length);
 
   for (let i = 0; i < response.todo.length; i++) {
-    console.log("*",response.todo[i]); 
+    console.log("*", response.todo[i]);
     addNewTask(response.todo[i], i);
   }
 }
 
-function updateData(element) {
-  const payload = {
-    id: myId,
-    todo: taskList,
-  };
+// function updateData(element) {
+//   const payload = {
+//     id: myId,
+//     todo: taskList,
+//   };
 
-  console.log("Payload:", payload);
-  console.log("Payload Text:", JSON.stringify(payload));
+//   console.log("Payload:", payload);
+//   console.log("Payload Text:", JSON.stringify(payload));
 
-  console.log("szi");
-  fetch(`https://simple-json-server-scit.herokuapp.com/todo/${myId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  }).then(getData);
-}
+//   console.log("szi");
+//   fetch(`https://simple-json-server-scit.herokuapp.com/todo/${myId}`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(payload),
+//   }).then(getData);
+// }
