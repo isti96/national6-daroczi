@@ -1,47 +1,10 @@
-img {
-  height: 25px;
-  width: 25px;
-  padding: 12px;
-}
-
-body {
+#generate-starship {
   display: block;
-  margin: 0;
 }
 
-header {
-  display: flex;
-  background-color: lightblue;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-input {
-  margin-left: 10px;
-}
-
-#addButton {
-  background-color: lightblue;
-  border-radius: 100%;
-}
-
-.task {
-  display: flex;
-  align-items: center;
-}
-
-.checkBoxClass {
-  padding: 10px;
-}
-
-.taskNameClass {
-  padding: 10px;
-}
-
-#removeButtonTag {
-  padding: 10px;
-}
-
-.task-item {
-  display: flex;
+.starship {
+  height: 50px;
+  display: block;
+  transition: all 0.3s ease;
+  margin: 10px;
 }
