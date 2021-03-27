@@ -1,6 +1,6 @@
 console.log("Starship generator");
 
-var mySpaceships = new Array(
+let mySpaceships = new Array(
   "blue-spaceship.png",
   "red-spaceship.png",
   "green-spaceship.png"
@@ -15,7 +15,7 @@ class Starship {
   }
 
   randomPicture() {
-    var randomNum = Math.floor(Math.random() * mySpaceships.length);
+    let randomNum = Math.floor(Math.random() * mySpaceships.length);
     this.ref.src = mySpaceships[randomNum];
   }
 
