@@ -22,7 +22,7 @@ class Starship {
   generateHtmlRef() {
     this.ref = document.createElement("img");
     this.ref.classList.add("starship");
-    document.getElementById("fat").appendChild(this.ref);
+    document.getElementById("starShipPlace").appendChild(this.ref);
   }
 
   moveStarship(x, y) {
