@@ -1,24 +1,47 @@
-console.log("JavaScript Object Oriented Programming (OOP)");
+console.log("JavaScript OOP Game");
 
-let newStarship;
+// object literal
+// this comes from Object class
+const obj = {};
 
-document.getElementById("generate-starship").addEventListener("click", () => {
-  console.log("generate starship");
+const a = new Object();
+console.log(a);
 
-  newStarship = new Starship();
-});
+// this comes from Array class
+const b = [];
 
-function moveSpaceship() {
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowUp") {
-      newStarship.moveUp();
-    } else if (event.key === "ArrowDown") {
-      newStarship.moveDown();
-    } else if (event.key === "ArrowLeft") {
-      newStarship.moveLeft();
-    } else if (event.key === "ArrowRight") {
-      newStarship.moveRight();
-    }
-  });
+class Car {
+  constructor(color) {
+    this.color = color;
+  }
+
+  startCar() {
+    console.log("Start Car");
+  }
 }
-moveSpaceship();
+
+class CarWithElectricWindows extends Car {
+  openElectricWindow(windowNr) {
+    console.log("Opening window ", windowNr);
+  }
+}
+
+const car1 = new Car("white");
+console.log(car1);
+// car1.openElectricWindow(2);
+const car2 = new CarWithElectricWindows("black");
+console.log(car2);
+car2.startCar();
+car2.openElectricWindow(3);
+
+class MyArray extends Array {
+  printLengthWithJoy() {
+    console.log(this.length + " with joy");
+  }
+}
+
+const myArray1 = new MyArray();
+myArray1.push("abc");
+myArray1.push("d");
+console.log(myArray1);
+myArray1.printLengthWithJoy();

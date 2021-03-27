@@ -1,10 +1,20 @@
-#generate-starship {
-  display: block;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
-.starship {
-  height: 50px;
-  display: block;
-  transition: all 0.3s ease;
-  margin: 10px;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-scene {
+  width: 1000px;
+  height: 500px;
+  border: 1px solid grey;
+  position: relative;
+  overflow: hidden;
 }
