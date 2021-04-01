@@ -6,7 +6,8 @@ body {
 }
 
 body {
-  display: flex;
+  display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -18,3 +19,13 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+#lives {
+  display: flex;
+  padding-bottom: 5px;
+}
+ 
+/* img {
+  width: 30px;
+  height: 30px;
+} */
