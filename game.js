@@ -70,6 +70,7 @@ class Obstacle extends GameObject {
     super();
     this.ref.style.background = "red";
     this.move(1060, 25);
+    this.collide = false;
   }
 
   moveLeft() {
@@ -114,25 +115,22 @@ class ObstacleFactory {
     }
   }
 }
-let ata = document.getElementById("lives"); 
+let ata = document.getElementById("lives");
 class Lives {
-  constructor(number)  {
+  constructor(number) {
     this.generateLifeRef(number);
     this.number = number;
     //this.makeObjects();
-    
-    
   }
-  
+
   generateLifeRef(number) {
     for (let i = 0; i < number; i++) {
-
       this.ref = document.createElement("img");
       this.ref.style.width = "30px";
       this.ref.style.height = "30px";
       this.ref.src = "heart.png";
-      
-       ata.appendChild(this.ref);
+
+      ata.appendChild(this.ref);
     }
   }
 
@@ -142,15 +140,13 @@ class Lives {
   }
 
   // makeObjects(n) {
-    
+
   //   for (let i = 0; i < n; i++) {
   //     lives[i] = new Lives();
-      
+
   //   }
   //   return lives;
   // }
-
-  
 }
 /// --- User  input
 
@@ -189,12 +185,16 @@ function collisionDetection(player, obstacles) {
   for (const obstacle of obstacles) {
     //console.log(player.x, obstacle.x);
 
-    if ( player.x < obstacle.x + obstacle.width &&
+    if (
+      player.x < obstacle.x + obstacle.width &&
       player.x + player.width > obstacle.x &&
       player.y < obstacle.y + obstacle.height &&
-      player.y + player.height > obstacle.y 
-    )
+      player.y + player.height > obstacle.y &&
+      obstacle.collide === false
+    ) {
+      obstacle.collide = true;
       return true;
+    }
   }
 
   return false;
@@ -215,39 +215,32 @@ let count = 0;
 // our objects method will be called at the interval callback
 
 let gameLoop = setInterval(() => {
-
-
-  
   if (keyUpPress) player.moveUp();
   if (keyDownPress) player.moveDown();
 
   // we spawn object only from 10 to 10 game loops
   if (count % 20 === 0) obstacleFactory.createObstacle();
 
-  
   obstacleFactory.moveObstacles();
 
- 
-  
   if (collisionDetection(player, obstacleFactory.obstacles)) {
-        
-     for (obstacleFactory.obstacle of obstacleFactory.obstacles) {
-     lives.removeRef();
-     console.log(lives);
-     console.log(lives.number); }
-     if (lives.number === 0) {
-       alert("The game has ended");
-     }
-       
-  
-
-    // clearInterval(gameLoop);
-    // alert("You hit an obstacle");
-    // window.location = "/";
+    //  for (obstacleFactory.obstacle of obstacleFactory.obstacles) {
+    lives.removeRef();
+    console.log(lives);
+    console.log(lives.number);
   }
-  
+  if (lives.number === 0) {
+    alert("The game has ended");
+    window.location = "/";
+    clearInterval(gameLoop);
+    // alert("You hit an obstacle");
+    
+  }
+
   // we check every game loop if we need to destroy objects outside of the game scene
   obstacleFactory.destroyObstacles();
 
   count++;
 }, 50);
+
+ 
