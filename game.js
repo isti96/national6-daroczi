@@ -91,26 +91,26 @@ class ObstacleFactory {
     }
   }
 }
-let ata = document.getElementById("lives");
+let livesDiv = document.getElementById("lives");
 class Lives {
   constructor(number) {
-    this.generateLifeRef(number);
     this.number = number;
+    this.generateLifeRef();
   }
 
-  generateLifeRef(number) {
-    for (let i = 0; i < number; i++) {
+  generateLifeRef() {
+    for (let i = 0; i < this.number; i++) {
       this.ref = document.createElement("img");
       this.ref.style.width = "30px";
       this.ref.style.height = "30px";
       this.ref.src = "heart.png";
 
-      ata.appendChild(this.ref);
+      livesDiv.appendChild(this.ref);
     }
   }
 
   removeRef() {
-    ata.removeChild(ata.lastChild);
+    livesDiv.removeChild(livesDiv.lastChild);
     this.number--;
   }
 }
@@ -158,8 +158,6 @@ function collisionDetection(player, obstacles) {
 const player = new Player();
 const obstacleFactory = new ObstacleFactory();
 let lives = new Lives(3);
-console.log(lives);
-console.log(lives.number);
 
 let count = 0;
 
@@ -173,8 +171,6 @@ let gameLoop = setInterval(() => {
 
   if (collisionDetection(player, obstacleFactory.obstacles)) {
     lives.removeRef();
-    console.log(lives);
-    console.log(lives.number);
   }
   if (lives.number === 0) {
     alert("You lost");
