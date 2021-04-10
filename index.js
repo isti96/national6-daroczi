@@ -38,10 +38,10 @@ function useJSONResponse(json) {
 function renderDogList(respRender) {
   const breeds = document.getElementById("breeds");
   breedsList = Object.keys(respRender.message);
-  console.log(breedsList);
 
   for (let i = 0; i < breedsList.length; i++) {
     let htmlElement = document.createElement("p");
+    htmlElement.classList.add("pointer");
     htmlElement.innerText = breedsList[i];
     breeds.appendChild(htmlElement);
 
@@ -50,7 +50,8 @@ function renderDogList(respRender) {
       localStorage.getItem("breed") &&
       breedsList[i] === localStorage.getItem("breed")
     ) {
-      htmlElement.className = " active";
+      htmlElement.classList.add("active");
+      htmlElement.classList.add("pointer");
 
       fetch(`https://dog.ceo/api/breed/${localStorage.getItem("breed")}/images`)
         .then(handleFetchResponse)
@@ -63,14 +64,12 @@ function renderDogImages() {
   for (let i = 0; i < breedsListHtml.length; i++) {
     breedsListHtml[i].addEventListener("click", function () {
       j = 0;
-
       pageNumber.innerText = j + 1;
 
       if (current.length > 0) {
         current[0].className = current[0].className.replace(" active", "");
       }
       this.className += " active";
-      console.log(current[0].innerText);
 
       fetch(`https://dog.ceo/api/breed/${breedsListHtml[i].innerText}/images`)
         .then(handleFetchResponse)
@@ -85,7 +84,6 @@ function useJSONResponseImages(jsonImages) {
 
 function assignImages(dogs) {
   dogImage = dogs.message;
-
   breedImage.setAttribute("src", dogImage[j]);
 }
 
@@ -104,7 +102,6 @@ document.getElementById("backward").addEventListener("click", imageBackward);
 
 function imageBackward() {
   if (pageNumber.innerText > 1) {
-    
     breedImage.setAttribute("src", dogImage[j - 1]);
     pageNumber.innerText = j;
     j--;
@@ -126,5 +123,4 @@ function assignImages2(dogs) {
   j = localStorage.getItem("index");
   breedImage.setAttribute("src", dogImage[j]);
   pageNumber.innerText = Number(localStorage.getItem("index")) + 1;
-  
 }
