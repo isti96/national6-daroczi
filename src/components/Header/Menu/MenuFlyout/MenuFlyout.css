@@ -1,0 +1,17 @@
+.app-menu-flyout {
+  margin-left: 10px;
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.app-menu-flyout p {
+  margin: 5px;
+  display: block;
+}
+
+.app-menu-flyout p:hover {
+  background-color: green;
+  cursor: pointer;
+}

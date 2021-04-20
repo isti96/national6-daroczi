@@ -1,0 +1,13 @@
+.app-menu-button {
+  display: inline-block;
+  border-radius: 100%;
+  background-color: white;
+  margin-left: 10px;
+}
+
+.app-menu-button img {
+  display: inline-block;
+  width: 27px;
+  height: 14px;
+  margin-left: 1px;
+}

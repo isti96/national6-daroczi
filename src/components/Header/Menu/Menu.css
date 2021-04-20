@@ -1,0 +1,9 @@
+.app-menu {
+  margin-top: 5px;
+  display: inline-block;
+  position: relative;
+}
+
+.app-menu:hover .app-menu-flyout {
+  display: block;
+}
