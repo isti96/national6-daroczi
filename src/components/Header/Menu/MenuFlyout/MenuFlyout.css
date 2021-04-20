@@ -12,6 +12,6 @@
 }
 
 .app-menu-flyout p:hover {
-  background-color: green;
+  background-color: lightgrey;
   cursor: pointer;
 }
