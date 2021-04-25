@@ -6,7 +6,7 @@ export function Menu() {
   return (
     <div className="app-menu">
       <MenuButton />
-      <MenuFlyout />
+      <MenuFlyout /> 
     </div>
   );
 }

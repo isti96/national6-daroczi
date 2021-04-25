@@ -9,5 +9,5 @@ export function Header() {
       <AppLogo />
       <p className="app-header__title">To Do App</p>
     </div>
-  );
+  ); 
 }

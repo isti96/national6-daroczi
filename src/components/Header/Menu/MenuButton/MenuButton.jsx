@@ -7,4 +7,4 @@ export function MenuButton() {
       <img src={menuButtonSvg} alt="menuButton" />
     </div>
   );
-}
+} 
