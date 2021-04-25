@@ -1,0 +1,20 @@
+.message {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 0;
+  width: 100%;
+  border: 1px solid grey;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#message-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 10px;
+  background-color: white;
+  border: none;
+}
