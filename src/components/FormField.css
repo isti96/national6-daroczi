@@ -11,4 +11,9 @@
 .contact-form-field input {
   width: 300px;
   padding: 5px;
+  border: 1px solid lightgray;
+}
+
+.contact-form-field--invalid {
+  border: 1px solid red;
 }

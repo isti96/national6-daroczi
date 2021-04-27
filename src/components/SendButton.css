@@ -1,4 +1,11 @@
 .send-container {
   display: flex;
   justify-content: flex-end;
+  background-color: red;
+}
+
+.send-container--valid {
+  display: flex;
+  justify-content: flex-end;
+  background-color: green;
 }
