@@ -1,9 +1,9 @@
 import "./SendButton.css";
 
-export function SendButton() {
+export function SendButton(props) {
   return (
     <div className="send-container">
-      <button
+      <button onClick={props.onClick}
      > Send </button>
     </div>
   );

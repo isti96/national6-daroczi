@@ -4,43 +4,149 @@ import { SendButton } from "./SendButton";
 import { FormMessage } from "./FormMessage";
 
 import "./Form.css";
+import { FormFieldTextArea } from "./FormFieldTextArea";
+
+
 
 export class Form extends Component {
   state = {
+    
     firstName: "",
-    hasFirstNameError: true,
+    lastName: "",
+    email: "",
+    message: "",
+    isInvalidFN: false,
+    isInvalidLN: false,
+    isInvalidEmail: false,
+    isInvalidMessage: false,
+    isValid: false,
+    
   };
 
-  checkHasError = () => {
-    const hasFirstNameError = this.state;
-    console.log(hasFirstNameError);
-    if (hasFirstNameError) {
-      return true;
+  handleFirstNameChange = (event) => {
+    this.setState({ firstName: event.target.value, isInvalidFN: false });
+  };
+
+  handleLastNameChange = (event) => {
+    this.setState({ lastName: event.target.value, isInvalidLN: false });
+  };
+
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value, isInvalidEmail: false });
+  };
+
+  handleMessageChange = (event) => {
+    this.setState({ message: event.target.value, isInvalidMessage: false });
+  };
+
+  // handleThisFN = () => {
+  //   if (this.state.firstName === "") {
+  //     this.setState({ isInvalidFN: true,
+  //     isValid: false, });
+  //   }
+  //    else {
+  //      this.setState({ isInvalidFN: false,
+  //     firstName: this.state.firstName })
+  //    }
+  // };
+
+  // handleThisLN = () => {
+  //   if (this.state.lastName === "") {
+  //     this.setState({ isInvalidLN: true,
+  //     isValid: false  });
+  //   }
+  //    else {
+  //      this.setState({ isInvalidLN: false,
+  //     lastName: this.state.lastName })
+  //    }
+  // };
+
+  // handleThisEmail = () => {
+  //   if (this.state.email === "") {
+  //     this.setState({ isInvalidEmail: true,
+  //     isValid: false  });
+  //   }
+  //    else {
+  //      this.setState({ isInvalidEmail: false,
+  //     email: this.state.email })
+  //    }
+  // };
+
+  handleAll = () => {
+    if (this.state.firstName === "") {
+      this.setState({ isInvalidFN: true });
     } else {
-      return false;
+      this.setState({ isInvalidFN: false });
     }
-    
-  }
 
-  handleFirstNameChange(firstName) {
-    let hasFirstNameError = true;
-    if (firstName.replace(/\s/g, "") !== "") {
-         hasFirstNameError = false;
+    if (this.state.lastName === "") {
+      this.setState({ isInvalidLN: true });
+    } else {
+      this.setState({ isInvalidLN: false });
     }
-    this.setState({ firstName, hasFirstNameError });
-  }
 
+    if (this.state.email === "") {
+      this.setState({ isInvalidEmail: true });
+    } else {
+      this.setState({ isInvalidEmail: false });
+    }
+
+    if (this.state.message === "") {
+      this.setState({ isInvalidMessage: true });
+    } else {
+      this.setState({ isInvalidMessage: false });
+    }
+    if (this.state.firstName && this.state.lastName && this.state.email && this.state.message) {
+      this.setState({ isValid: true });
+    } else {
+      this.setState({ isValid: false });
+    }
+  };
+
+  onClick = () => {
+        this.setState({ isValid: false })
+  }
 
   render() {
-    
     return (
       <div id="contact-form">
-        <FormField label="FIRST NAME" onChange={this.handleFirstNameChange}
+        <FormField
+          label="FIRST NAME"
+          style={{
+            border: this.state.isInvalidFN ? "1px solid red" : undefined,
+          }}
+          onChange={this.handleFirstNameChange}
         />
-        <FormField label="LAST NAME" />
-        <FormField label="EMAIL" />
-        <SendButton  className={ this.checkHasError() ? "send-container" : "send-container--valid"}/>
-        <FormMessage />
+        <FormField
+          label="LAST NAME"
+          style={{
+            border: this.state.isInvalidLN ? "1px solid red" : undefined,
+          }}
+          onChange={this.handleLastNameChange}
+        />
+        <FormField 
+          label="EMAIL"
+          
+          style={{
+            border: this.state.isInvalidEmail ? "1px solid red" : undefined,
+          }}
+          onChange={this.handleEmailChange}
+        />
+        <FormFieldTextArea
+          label="MESSAGE"
+          
+          style={{
+            border: this.state.isInvalidMessage ? "1px solid red" : undefined,
+          }}
+          onChange={this.handleMessageChange}
+        />
+        <SendButton onClick={this.handleAll} />
+        <FormMessage
+          style={{
+            display: this.state.isValid ? "flex" : "none",
+          }}
+          onClick={this.onClick}
+        />
       </div>
     );
   }

@@ -12,8 +12,9 @@
   width: 300px;
   padding: 5px;
   border: 1px solid lightgray;
+  
 }
 
-.contact-form-field--invalid {
-  border: 1px solid red;
+.contact-form-field:nth-child(4) {
+  align-items: flex-start;
 }
