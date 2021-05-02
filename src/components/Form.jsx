@@ -6,11 +6,8 @@ import { FormMessage } from "./FormMessage";
 import "./Form.css";
 import { FormFieldTextArea } from "./FormFieldTextArea";
 
-
-
 export class Form extends Component {
   state = {
-    
     firstName: "",
     lastName: "",
     email: "",
@@ -20,7 +17,6 @@ export class Form extends Component {
     isInvalidEmail: false,
     isInvalidMessage: false,
     isValid: false,
-    
   };
 
   handleFirstNameChange = (event) => {
@@ -38,39 +34,6 @@ export class Form extends Component {
   handleMessageChange = (event) => {
     this.setState({ message: event.target.value, isInvalidMessage: false });
   };
-
-  // handleThisFN = () => {
-  //   if (this.state.firstName === "") {
-  //     this.setState({ isInvalidFN: true,
-  //     isValid: false, });
-  //   }
-  //    else {
-  //      this.setState({ isInvalidFN: false,
-  //     firstName: this.state.firstName })
-  //    }
-  // };
-
-  // handleThisLN = () => {
-  //   if (this.state.lastName === "") {
-  //     this.setState({ isInvalidLN: true,
-  //     isValid: false  });
-  //   }
-  //    else {
-  //      this.setState({ isInvalidLN: false,
-  //     lastName: this.state.lastName })
-  //    }
-  // };
-
-  // handleThisEmail = () => {
-  //   if (this.state.email === "") {
-  //     this.setState({ isInvalidEmail: true,
-  //     isValid: false  });
-  //   }
-  //    else {
-  //      this.setState({ isInvalidEmail: false,
-  //     email: this.state.email })
-  //    }
-  // };
 
   handleAll = () => {
     if (this.state.firstName === "") {
@@ -96,7 +59,12 @@ export class Form extends Component {
     } else {
       this.setState({ isInvalidMessage: false });
     }
-    if (this.state.firstName && this.state.lastName && this.state.email && this.state.message) {
+    if (
+      this.state.firstName &&
+      this.state.lastName &&
+      this.state.email &&
+      this.state.message
+    ) {
       this.setState({ isValid: true });
     } else {
       this.setState({ isValid: false });
@@ -104,8 +72,8 @@ export class Form extends Component {
   };
 
   onClick = () => {
-        this.setState({ isValid: false })
-  }
+    this.setState({ isValid: false });
+  };
 
   render() {
     return (
@@ -124,9 +92,8 @@ export class Form extends Component {
           }}
           onChange={this.handleLastNameChange}
         />
-        <FormField 
+        <FormField
           label="EMAIL"
-          
           style={{
             border: this.state.isInvalidEmail ? "1px solid red" : undefined,
           }}
@@ -134,7 +101,6 @@ export class Form extends Component {
         />
         <FormFieldTextArea
           label="MESSAGE"
-          
           style={{
             border: this.state.isInvalidMessage ? "1px solid red" : undefined,
           }}
