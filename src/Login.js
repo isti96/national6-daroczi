@@ -31,7 +31,7 @@ export default class Login extends Component {
             style={styles.logo}
             source={require("../images/Octocat.png")}
           />
-          <Text style={styles.title}>Welcome on Istigram</Text>
+          <Text style={styles.title}>Pistagram</Text>
         </View>
         <View style={styles.formContainer}>
           <TouchableOpacity style={styles.pickerContainer}>
@@ -75,6 +75,25 @@ export default class Login extends Component {
               {this.state.user === "English" ? "LOGIN" : "AUTENTIFICĂ-TE"}
             </Text>
           </TouchableOpacity>
+          <View>
+            <Text style={styles.orText}>
+              {this.state.user === "English" ? "or" : "sau"}
+            </Text>
+          </View>
+          <View style={styles.socMedIcons}>
+            <TouchableOpacity>
+              <Icon name="facebook" style={styles.icon} size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="instagram" style={styles.icon} size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="linkedin" style={styles.icon} size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="google" style={styles.icon} size={30} />
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity style={styles.signupButtonContainer}>
             <Text style={styles.buttonText}>
               {this.state.user === "English" ? "SIGN UP" : "CREAȚI CONT NOU"}
@@ -105,6 +124,12 @@ const styles = StyleSheet.create({
     color: "#FFF",
     paddingHorizontal: 10,
   },
+  socMedIcons: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   loginButtonContainer: {
     backgroundColor: "#2980b9",
     paddingVertical: 15,
@@ -113,7 +138,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   formContainer: {
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+  },
+  orText: {
+    textAlign: "center",
+  },
+  icon: {
+    padding: 10,
   },
   signupButtonContainer: {
     backgroundColor: "darkblue",
@@ -148,8 +179,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: "40%",
-    height: "40%",
+    width: 100,
+    height: 100,
   },
   title: {
     color: "#FFF",
@@ -157,6 +188,7 @@ const styles = StyleSheet.create({
     width: 160,
     textAlign: "center",
     opacity: 0.9,
+    fontSize: 30,
   },
   cog: {
     color: "lightblue",

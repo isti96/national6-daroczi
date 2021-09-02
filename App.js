@@ -1,23 +1,12 @@
-import React, { Component, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  KeyboardAvoidingView,
-  TouchableOpacity,
-  Picker,
-} from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import Login from "./src/Login.js";
-
-// import { Picker } from "@react-native-picker/picker";
 
 export default class App extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Login />
-        <View style={styles.formContainer}></View>
       </KeyboardAvoidingView>
     );
   }
