@@ -1,21 +1,83 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  Picker,
+} from "react-native";
+import Login from "./src/Login.js";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+// import { Picker } from "@react-native-picker/picker";
+
+export default class App extends Component {
+  render() {
+    return (
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <Login />
+        <View style={styles.formContainer}></View>
+      </KeyboardAvoidingView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#3498db",
   },
 });
+
+//
+
+// export default function App() {
+//   const handlePress = () => console.log("text pressed");
+
+//   return (
+//     <View
+//       style={{
+//         backgroundColor: "lightblue",
+//         flex: 1,
+//         flexDirection: "column",
+//         alignItems: "center",
+//         justifyContent: "space-evenly",
+//       }}
+//     >
+//       <View
+//         style={{
+//           backgroundColor: "dodgerblue",
+//           height: 100,
+//           width: "25%",
+//           justifyContent: "center",
+//           alignItems: "center",
+//         }}
+//       >
+//         <Text onPress={handlePress}>Hello lanyok</Text>
+//       </View>
+//       <View
+//         style={{
+//           backgroundColor: "gold",
+//           height: 100,
+//           width: "75%",
+//         }}
+//       />
+//       <View
+//         style={{
+//           backgroundColor: "tomato",
+//           height: 100,
+//           width: "50%",
+//         }}
+//       />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+//   },
+// });
