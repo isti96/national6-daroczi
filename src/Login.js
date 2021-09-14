@@ -11,11 +11,18 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+
 export default class Login extends Component {
+  constructor(navigation) {
+    super(navigation);
+  }
+
   state = { user: "English" };
   updateUser = (user) => {
     this.setState({ user: user });
   };
+
+ 
 
   render() {
     return (
@@ -31,7 +38,7 @@ export default class Login extends Component {
             style={styles.logo}
             source={require("../images/Octocat.png")}
           />
-          <Text style={styles.title}>Pistagram</Text>
+          <Text style={styles.title}>MyStackLibrary</Text>
         </View>
         <View style={styles.formContainer}>
           <TouchableOpacity style={styles.pickerContainer}>
@@ -44,6 +51,7 @@ export default class Login extends Component {
               <Picker.Item label="Română" value="Română" />
             </Picker>
           </TouchableOpacity>
+
           <TextInput
             placeholder={
               this.state.user === "English"
@@ -69,7 +77,9 @@ export default class Login extends Component {
           />
           <TouchableOpacity
             style={styles.loginButtonContainer}
-            onPress={() => console.log("login")}
+            onPress={() => {
+              this.props.navigation.navigate("Welcome");
+            }}
           >
             <Text style={styles.buttonText}>
               {this.state.user === "English" ? "LOGIN" : "AUTENTIFICĂ-TE"}
@@ -116,7 +126,9 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
+    backgroundColor: "lightblue",
   },
+
   input: {
     height: 40,
     backgroundColor: "rgba(255,255,255,0.2)",
@@ -167,7 +179,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   pickerContainer: {
-    backgroundColor: "lightblue",
+    backgroundColor: "#2980b9",
     borderRadius: 10,
     width: 200,
     alignSelf: "center",
@@ -185,13 +197,13 @@ const styles = StyleSheet.create({
   title: {
     color: "#FFF",
     marginTop: 10,
-    width: 160,
+    width: 210,
     textAlign: "center",
     opacity: 0.9,
     fontSize: 30,
   },
   cog: {
-    color: "lightblue",
+    color: "#304eba",
     alignSelf: "flex-end",
     padding: 5,
   },
